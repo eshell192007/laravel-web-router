@@ -1,0 +1,27 @@
+{
+    "name": "hoangtv2101/web-router",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tran Van Hoang",
+            "email": "hoangtv2101@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "5.4.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "WebRouter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
