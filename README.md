@@ -1,6 +1,6 @@
 # Laravel Web Router Extension
 
-[![Packagist Version](https://img.shields.io/packagist/vpre/hoangtv2101/laravel-web-router.svg)](https://packagist.org/packages/hoangtv2101/laravel-web-router)
+[![Packagist Version](https://img.shields.io/packagist/vpre/hoangtv2101/web-router.svg)](https://packagist.org/packages/hoangtv2101/laravel-web-router)
 [![Travis Build Status](https://img.shields.io/travis/hoangtv2101/laravel-web-router.svg)](https://travis-ci.org/hoangtv2101/laravel-web-router)
 
 ## Introduction
@@ -21,7 +21,7 @@ this package, you can use only ```http://example.com/create-post``` URI to handl
 
 ## Installation
 ```
-composer require hoangtv2101/laravel-web-router
+composer require hoangtv2101/web-router
 ```
 
 ## Configuration  
