@@ -7,9 +7,7 @@
 This is an extention for laravel router, especially for web routing. Although, web action work around resource but you shouldn't follow REST to create
 routing for web, because:
 
- 1. Actually, your web application link(uri) does not follow REST architecture and it shouldn't.
-There is a great speak about REST you could see on [GOTO Conferences](https://www.youtube.com/watch?v=pspy1H6A3FM).
- 2. Action in REST is very different from web action.  
+ 1. Action in REST is very different from web action.  
  Example: to create a post with REST you only send post request to a uri like:  
  ```POST: http://example.com/posts```  
  But to create a post in a normal web application you must follow these steps:  
