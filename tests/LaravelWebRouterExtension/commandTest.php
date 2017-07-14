@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\LaravelWebRouterExtension;
 
 use WebRouter\LaravelWebRouterExtension as Route;
 use Illuminate\Container\Container as Container;
@@ -10,14 +10,16 @@ use Tests\Mocks\RequestMock;
 use Tests\Mocks\RouterMock;
 use PHPUnit_Framework_TestCase as TestCase;
 
-class LaravelWebRouterExtensionTest extends TestCase {
+class commandTest extends TestCase {
 
     public static function setUpBeforeClass() {
         $app = new Container();
         Facade::setFacadeApplication($app);
         $app->bind('request', RequestMock::class);
         $app->bind('router', RouterMock::class);
-        class_alias(Request::class, 'Request');
+        if (!class_exists('Request')){
+            class_alias(Request::class, 'Request');
+        }
     }
 
     /**
@@ -25,15 +27,15 @@ class LaravelWebRouterExtensionTest extends TestCase {
      */
     public function WhenMissingParameter_MethodShouldThrowRunTimeException() {
         $this->expectException(\RuntimeException::class);
-        Route::web('create-post');
+        Route::command('create-post');
     }
-    
+
     /**
      * @test
      */
     public function WhenPassSecondParameterIsNotAString_ThenMethodShouldThrowRunTimeException() {
         $this->expectException(\RuntimeException::class);
-        Route::web('create-post', function() {
+        Route::command('create-post', function() {
             return 'any thing';
         });
     }
@@ -41,31 +43,9 @@ class LaravelWebRouterExtensionTest extends TestCase {
     /**
      * @test
      */
-    public function PassValidArgument_WhenRequestMethodIsGET_ThenQueryMethodShouldBeCalled() {
-        //TODO: set up fake HTTP method
-        Request::setMethod('get');
-
-        //TODO: run method to test
-        $return_value = Route::web('create-post', 'Post\CreatePost');
-
-        //TODO:
-        $this->assertTrue(Route::getIsCalled());
-        $this->assertFalse(Route::postIsCalled());
-        $actual_action = Route::getAction();
-        $expected_action = 'Post\CreatePost@query';
-        $this->assertEquals($expected_action, $actual_action);
-        $this->assertInstanceOf(\Illuminate\Routing\Router::class, $return_value);
-    }
-
-    /**
-     * @test
-     */
     public function PassValidArgument_WhenRequestMethodIsPOST_ThenCommandMethodShouldBeCalled() {
-        //TODO: set up fake HTTP method
-        Request::setMethod('post');
-
         //TODO:
-        $return_value = Route::web('create-post', 'Post\CreatePost');
+        $return_value = Route::command('create-post', 'Post\CreatePost');
 
         //TODO:
         $this->assertTrue(Route::postIsCalled());
